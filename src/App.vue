@@ -2,12 +2,12 @@
 <div id="app">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <router-link to="/" class="navbar-brand">Seller Dashboard</router-link>
+      <router-link to="/" class="navbar-brand">Online Shop</router-link>
       <div class="collapse navbar-collapse">
         <div class="navbar-nav">
-          <router-link to="/products" class="nav-link">Product List</router-link>
-          <router-link to="/add" class="nav-link">Add New Product</router-link>
+          <router-link to="/login" class="nav-link">Login</router-link>
         </div>
+        <span class="navbar-text mr-auto">Logged In as: {{userState.username}}</span>
       </div>
     </div>
   </nav>
@@ -21,7 +21,25 @@
 
 
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+      return{
+        userState :{
+        username: '',
+        //userId: null,
+        isLoggedIn: 'false'
+      }
+    }
+  },
+  mounted(){
+    if(localStorage.getItem('isLoggedIn') == 'true')
+      this.userState.username = this.$session.get('username')
+    else
+      this.userState.username = "Anon"
+  },
+  created(){
+    localStorage.setItem('isLoggedIn',  'false')
+  }
 }
 </script>
 

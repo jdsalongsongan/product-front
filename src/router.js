@@ -3,18 +3,28 @@ import {createRouter, createWebHistory} from 'vue-router'
 
     const routes = [
         {
-            path: '/',
-            alias: '/products',
+            path:'/',
+            name: 'home-page',
+            component: () => import('@/components/HomePage.vue')
+        },
+        {
+            path:'/login',
+            name: 'login-page',
+            component: () => import('@/components/Login.vue')
+        },
+        {
+            path: '/seller',
+            alias: '/seller/products',
             name: 'products',
             component: () => import('@/components/ProductList.vue')
         },
         {
-            path: '/products/:id',
+            path: '/seller/products/:id',
             name: 'edit-product',
             component: () => import('@/components/EditProduct.vue')
         },
         {
-            path: '/add',
+            path: '/seller/add',
             name: 'add-product',
             component: () => import('@/components/AddProduct.vue')
         }
