@@ -8,23 +8,28 @@ import {createRouter, createWebHistory} from 'vue-router'
             component: () => import('@/components/HomePage.vue')
         },
         {
+            path:'/user',
+            name: 'user-page',
+            component: () => import('@/components/SellerDashboard.vue')
+
+        },
+        {
             path:'/login',
             name: 'login-page',
             component: () => import('@/components/Login.vue')
         },
         {
-            path: '/seller',
-            alias: '/seller/products',
+            path: '/products',
             name: 'products',
             component: () => import('@/components/ProductList.vue')
         },
         {
-            path: '/seller/products/:id',
+            path: '/products/:id',
             name: 'edit-product',
             component: () => import('@/components/EditProduct.vue')
         },
         {
-            path: '/seller/add',
+            path: '/add',
             name: 'add-product',
             component: () => import('@/components/AddProduct.vue')
         }

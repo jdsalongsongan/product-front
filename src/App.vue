@@ -5,9 +5,11 @@
       <router-link to="/" class="navbar-brand">Online Shop</router-link>
       <div class="collapse navbar-collapse">
         <div class="navbar-nav">
+          <!--change to back to buyer-->
           <router-link to="/login" class="nav-link">Login</router-link>
+          <router-link to="/products" class="nav-link">Product List</router-link>
+          <router-link to="/add" class="nav-link">Add New Product</router-link>
         </div>
-        <span class="navbar-text mr-auto">Logged In as: {{userState.username}}</span>
       </div>
     </div>
   </nav>
@@ -31,6 +33,7 @@ export default {
       }
     }
   },
+  
   mounted(){
     if(localStorage.getItem('isLoggedIn') == 'true')
       this.userState.username = this.$session.get('username')

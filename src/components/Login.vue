@@ -26,25 +26,27 @@ export default{
         return{
             users: [],
             username:'',
-            password:''
+            password:'',
+            loggedIn: false
         }
     },
     methods:{
         logIn(){
             var userl = this.users
-            let loggedIn = false
-            for(let i = 0; i < userl.length; i++){
+            let i = 0
+            for(i = 0; i < userl.length; i++){
                 if(userl[i].username == this.username && userl[i].password == this.password) {
-                    loggedIn = true
+                    this.loggedIn = true 
+                    break   
                 }
             }
-
-            if(!loggedIn){
+            if(!this.loggedIn){
                 alert('Your username and/or password are incorrect. Try again')
             }
             else{
-                localStorage.setItem('username', this.passwords)
+                localStorage.setItem('username', userl[i].username)
                 localStorage.setItem('isLoggedIn', 'true')
+                this.$router.go({path: '/'})
             }
 
         },
